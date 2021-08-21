@@ -1,0 +1,36 @@
+image: node:14.17.3
+
+stages:
+  - install
+  - test
+  - deploy
+
+install:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    expire_in: 1h
+    paths:
+      - node_modules/
+  cache:
+    paths:
+      - node_modules/
+
+tests:
+  stage: test
+  dependencies:
+    - install
+  script:
+    - npm run test:ci
+
+Deploy:
+  image: ruby:latest
+  stage: deploy
+  only:
+    - main
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY

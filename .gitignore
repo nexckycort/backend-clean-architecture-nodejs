@@ -1,0 +1,24 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# Compiled 
+build
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env-cmdrc.json

@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      "app/*": ["app/*"],
+      "domain": ["domain"],
+      "infrastructure/*": ["infrastructure/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
+}
