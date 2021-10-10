@@ -17,9 +17,9 @@ Object.assign(
 const config: Config.InitialOptions = {
   clearMocks: true,
   preset: 'ts-jest',
-  testEnvironment: 'node',
   roots: ['<rootDir>/src'],
   collectCoverageFrom: ['<rootDir>/src/**/*.ts', '!**/node_modules/**'],
+  testEnvironment: 'node',
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   moduleNameMapper: paths

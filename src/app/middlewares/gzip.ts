@@ -1,3 +1,3 @@
-import compression from 'compression'
+import fastifyCompress from 'fastify-compress'
 
-export const gzip = compression()
+export const gzip = fastifyCompress

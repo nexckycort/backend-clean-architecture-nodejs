@@ -1,11 +1,11 @@
 {
   "extends": "standard-with-typescript",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.eslint.json"
   },
+  "parser": "@typescript-eslint/parser",
   "rules": {
     "@typescript-eslint/space-before-function-paren": "off",
-    "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/explicit-function-return-type": "off"
   }
 }

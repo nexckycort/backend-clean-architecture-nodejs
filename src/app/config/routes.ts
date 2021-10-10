@@ -1,23 +1,18 @@
-import { Express, Request, Response } from 'express'
+import { FastifyInstance } from 'fastify'
 
-import { errorHandlers, notFound } from 'app/middlewares'
+import { routesV1 } from 'infrastructure/entry-points/api/v1'
 import { api } from 'app/config/environment'
-import { routerV1 } from 'infrastructure/entry-points/api/v1'
 
-export default (app: Express): void => {
+export default (app: FastifyInstance): void => {
   // validate status
-  app.get('/status', (_req: Request, res: Response) => {
-    res.status(200).end()
+  app.get('/status', (_req, res) => {
+    void res.status(200).send()
+  })
+
+  app.ready(() => {
+    console.info(app.printRoutes())
   })
 
   // Load API route
-  app.use(api.prefixV1, routerV1)
-  /* readdirSync(join(__dirname, '..', 'routes')).map(async (file) => {
-    if (!file.includes('.test.')) {
-      ;(await import(`../routes/${file}`)).default(router)
-    }
-  }) */
-
-  app.use(notFound)
-  app.use(errorHandlers)
+  void app.register(routesV1, { prefix: api.prefixV1 })
 }

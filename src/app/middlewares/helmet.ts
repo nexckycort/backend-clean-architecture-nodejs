@@ -1,3 +1,3 @@
-import helmetApp from 'helmet'
+import fastifyHelmet from 'fastify-helmet'
 
-export const helmet = helmetApp()
+export const helmet = fastifyHelmet

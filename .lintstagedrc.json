@@ -1,6 +1,3 @@
 {
-  "*.ts": [
-    "prettier --write src",
-    "eslint --cache --fix"
-  ]
+  "*.ts": ["npm run lint", "npm run format", "npm test"]
 }

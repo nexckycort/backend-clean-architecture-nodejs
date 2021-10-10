@@ -1,4 +1,4 @@
-image: node:14.17.3
+image: node:14.17.5
 
 stages:
   - install
@@ -8,7 +8,7 @@ stages:
 install:
   stage: install
   script:
-    - npm install
+    - npm ci
   artifacts:
     expire_in: 1h
     paths:
@@ -22,7 +22,7 @@ tests:
   dependencies:
     - install
   script:
-    - npm run test:ci
+    - npm run test
 
 Deploy:
   image: ruby:latest

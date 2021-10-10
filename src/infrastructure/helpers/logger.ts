@@ -1,15 +1,21 @@
+import { environment } from 'app/config/environment'
+
 export const Logger = {
   info: (...args: unknown[]): void => {
-    args.forEach((arg) => {
-      console.info(arg)
-    })
+    if (environment === 'development') {
+      args.forEach((arg) => {
+        console.info(arg)
+      })
+    }
   },
   debug: (...args: unknown[]): void => {
-    args.forEach((arg) => {
-      console.debug(arg)
-    })
+    if (environment === 'development') {
+      args.forEach((arg) => {
+        console.debug(arg)
+      })
+    }
   },
-  error: (msg: string, e: Error | string = ''): void => {
-    console.error(`⚠️  ${msg} ⚠️ `, e)
+  error: (msg: string, e: Error | unknown | string = ''): void => {
+    if (environment === 'development') console.error(`⚠️  ${msg} ⚠️ `, e)
   }
 }

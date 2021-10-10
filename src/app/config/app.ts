@@ -1,11 +1,13 @@
-import express from 'express'
+import Fastify from 'fastify'
 
-import setupSwagger from 'app/config/config-swagger'
-import { middlewares } from 'app/config/middlewares'
 import routes from 'app/config/routes'
+import { middlewares } from 'app/config/middlewares'
 
-const app = express()
-setupSwagger(app)
+const app = Fastify({
+  // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
+  // It shows the real origin IP in the heroku or Cloudwatch logs
+  trustProxy: true
+})
 middlewares(app)
 routes(app)
 

@@ -6,7 +6,6 @@ const packageJSON = fse.readJSONSync(projectRoot)
 packageJSON.scripts = {
   start: 'node ./server.js'
 }
-packageJSON.bin = './server.js'
 Reflect.deleteProperty(packageJSON, 'devDependencies')
 
 fse.writeFileSync(projectRoot, JSON.stringify(packageJSON, null, '  '))

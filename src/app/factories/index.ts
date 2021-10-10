@@ -1,0 +1,1 @@
+export { makeHelloController } from './hello'
